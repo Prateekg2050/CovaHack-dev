@@ -1,9 +1,11 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import {Button} from "react-bootstrap";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+
 
 firebase.initializeApp({
   apiKey: "AIzaSyAGQeQ2XJpnN3H9SU8Wk2MVNQNHAdDfBRc",
@@ -25,13 +27,13 @@ export const SignIn = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
   };
-  return <button onClick={signInWithGoogle}>Sign In With Google</button>;
+  return <button type="button" class="btn btn-outline-success" onClick={signInWithGoogle}>Sign in</button>;
 };
 
 export const SignOut = () => {
   return (
     auth.currentUser && (
-      <button
+      <button type="button" class="btn btn-outline-danger ms-2"
         onClick={() => {
           auth.signOut();
         }}>
