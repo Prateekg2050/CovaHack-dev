@@ -10,13 +10,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <section>
-          {user ? <Dashboard/> : <Landing/>}
-        </section>
+        <section>{user ? <Dashboard user={user} /> : <Landing />}</section>
       </header>
     </div>
   );
 }
-
 
 export default App;
