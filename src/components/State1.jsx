@@ -8,7 +8,8 @@ const [stateId,setStateId] = useState("");
   return(
   <>
   <div>
-  <DropdownButton id="dropdown-basic-button" title="Select State">
+  <h3>Find by District</h3>
+  <DropdownButton id="dropdown-basic-button" title="Select State" style={{height: '10vh',overflowY:'auto',width:'50vh',overflow: 'inherit'}}>
       {Sdata.map((val)=>{
           return(
             <Dropdown.Item onClick={()=>{setStateId(val.state_id)}}>{val.state_name}</Dropdown.Item>

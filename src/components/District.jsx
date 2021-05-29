@@ -26,7 +26,6 @@ const [sessions, setSessions] = useState([]);
     */
     return (
       <div>
-        <h3>Find by District ID</h3>
         <ul>
           {sessions.length > 0 &&
             sessions.map((data, index) => (

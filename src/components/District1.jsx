@@ -28,7 +28,7 @@ const District1 = (props) => {
   return (
     <>
       <div>
-        <DropdownButton id="dropdown-basic-button" title="Select District">
+        <DropdownButton id="dropdown-basic-button" title="Select District" style={{height: '10vh',overflowY:'auto',width:'50vh',overflow:'inherit'}}>
             {sessions.map((val)=>{
                 return(
                 <Dropdown.Item onClick={()=>{setdistrictid(val.district_id)}}>{val.district_name}</Dropdown.Item>
