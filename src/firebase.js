@@ -2,8 +2,10 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-import {useAuthstate} from 'react-firebase-hooks/auth';
+
+
 import {useCollectionData} from 'react-firebase-hooks/firestore';
+
 
 firebase.initializeApp({
     apiKey: "AIzaSyAGQeQ2XJpnN3H9SU8Wk2MVNQNHAdDfBRc",
@@ -19,11 +21,13 @@ firebase.initializeApp({
 export const auth = firebase.auth();
 const firestore = firebase.firestore();
 
-export const [user] = useAuthstate(auth);
+
 
 
 
 export const SignIn=()=>{
+
+  
     const signInWithGoogle = ()=>{
       const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider);
