@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { SignOut } from "../firebase";
+import State1 from './State1';
 
 const Dashboard = (props) => {
   return (
@@ -11,7 +12,9 @@ const Dashboard = (props) => {
       <p>{`Hi, ${props.user.displayName}`}</p>
       <p>Find COVID vaccines appointment availability:</p>
       <Pin />
-    </>
+      <br/>
+      <State1/>
+      </>
   );
 };
 
@@ -66,5 +69,4 @@ const Pin = () => {
     </div>
   );
 };
-
 export default Dashboard;
