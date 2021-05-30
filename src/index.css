@@ -34,3 +34,13 @@ code {
   background-size: cover;
   margin-left: 15px;
 }
+
+  .header
+{  
+    background-image: linear-gradient(to right bottom,rgba(54, 54, 54, 0.822),rgba(0, 0, 0, 0.685)),url('https://www.thenewsminute.com/sites/default/files/COVID19Vaccine-GenericRepresentative-231020-1200x800-Picxy.jpg');
+    height: 90vh;
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    
+}

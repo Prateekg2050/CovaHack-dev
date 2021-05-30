@@ -22,6 +22,8 @@ const Dashboard = (props) => {
 const Pin = () => {
   const [pin, setPin] = useState("");
   const [sessions, setSessions] = useState([]);
+  const [date1, setDate1] = useState("30-05-2021");
+  const [date, setDate] = useState(new Date().toISOString().substr(0, 10));
   const handleChange = (e) => {
     setPin(e.target.value);
   };
@@ -29,7 +31,7 @@ const Pin = () => {
     //TODO: Make date variable
     axios
       .get(
-        `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${pin}&date=29-05-2021`
+        `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${pin}&date=${date1}`
       )
       .then((res) => {
         console.log(res.data);
@@ -41,16 +43,27 @@ const Pin = () => {
   #3: Implement other APIs from https://apisetu.gov.in/public/api/cowin/
   */
   return (
-    <div>
+    <div className="d-flex p-2 flex-column">
       <h3>Find by pin</h3>
       <input type="text" name="pin" value={pin} onChange={handleChange} />
-      <button type="button" class="btn btn-primary ms-2" onClick={findByPin}>
+      <br/>
+      <input
+        type="date"
+        name="date"
+        value={date}
+        onChange={(e) => {
+          let date = e.target.value.split("-");
+          setDate(e.target.value);
+          setDate1(`${date[2]}-${date[1]}-${date[0]}`);
+        }}
+      />
+      <button type="button" class="btn btn-primary ms-2" onClick={findByPin} style={{marginTop:'10px',marginRight: '10px'}}>
         Find
       </button>
-      <ul>
+      <ul className='list-group'>
         {sessions.length > 0 &&
           sessions.map((data, index) => (
-            <li key={`${index}-sessions`}>
+            <li key={`${index}-sessions`} className='list-group-item'>
               <div>
                 <p>{data.name}</p>
                 <p>{data.address}</p>

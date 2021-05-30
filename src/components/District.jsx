@@ -5,15 +5,19 @@ import React, { useEffect, useState } from "react";
 
 const [sessions, setSessions] = useState([]);
 
+const [date1, setDate1] = useState("30-05-2021");
+const [date, setDate] = useState(new Date().toISOString().substr(0, 10));
+
+
     useEffect(()=>{
       findByDistrict_id();
-    },[props.district_id])
+    },[props.district_id,date1])
     
     const findByDistrict_id = () => {
       //TODO: Make date variable
       axios
         .get(
-          `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${props.district_id}&date=31-03-2021`
+          `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${props.district_id}&date=${date1}`
         )
         .then((res) => {
           console.log(res.data);
@@ -26,10 +30,21 @@ const [sessions, setSessions] = useState([]);
     */
     return (
       <div>
-        <ul>
+        <p>Enter the date</p>
+        <input
+        type="date"
+        name="date"
+        value={date}
+        onChange={(e) => {
+          let date = e.target.value.split("-");
+          setDate(e.target.value);
+          setDate1(`${date[2]}-${date[1]}-${date[0]}`);
+        }}
+      />
+        <ul className="list-group">
           {sessions.length > 0 &&
             sessions.map((data, index) => (
-              <li key={`${index}-sessions`}>
+              <li key={`${index}-sessions`} className='list-group-item'>
                 <div>
                   <p>{data.name}</p>
                   <p>{data.address}</p>
